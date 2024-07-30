@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - nurbolm/argocd:v0.1.4

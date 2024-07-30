@@ -1,0 +1,17 @@
+namespace: test
+replicas:
+  - name: nginx-deployment
+    count: 1
+images:
+  - name: nurbolm/argocd
+    newName: nurbolm/argocd
+    newTag: v0.1.0
+resources:
+  - ../my-app/
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/imagePullSecrets
+        value: [{ name: dockerconfigjson }]
